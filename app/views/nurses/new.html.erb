@@ -1,0 +1,40 @@
+<div class="nurses-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 nurses-new-container">
+        <h1 class="text-center text-white">職員登録</h1>
+        <%= form_for @nurse do |f| %>
+          <div class="form-group">
+            <%= f.label :"所属", class: 'text-white' %>
+            <%= f.text_field :affiliation, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"職員ID", class: 'text-white' %>
+            <%= f.text_field :staff_id, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"氏名", class: 'text-white' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"管理者権限", class: 'text-white' %>
+            <%= f.text_field :authority, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, class: 'text-white' %>
+            <%= f.label :"＊パスワードは、8~32文字の小英数字で入力してください。", class: 'text' %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"password再確認", class: 'text-white' %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+
+
+          <%= f.submit "登録", class: 'btn-block btn-white' %>
+        <% end %>
+        <%= link_to 'ログインはこちら', '#',class: 'text-white' %>
+      </div>
+    </div>
+  </div>
+</div>

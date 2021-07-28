@@ -1,0 +1,27 @@
+h1, h2 {
+  font-weight: 100;
+}
+
+.text-white {
+  color: #fffafa;
+}
+
+.btn-white {
+  color: #fffafa;
+  border: 1px solid #fffafa;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
