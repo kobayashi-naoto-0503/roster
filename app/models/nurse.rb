@@ -5,5 +5,8 @@ class Nurse < ApplicationRecord
   validates :authority, presence: true
   validates :password,format:{with:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/}
   
+  enum affiliation: { a: 0, b: 1, c: 2, d: 3, e: 4, f: 5, g: 6, h: 7, i: 8, j: 9 }
+  enum authority: { yes: 0, no: 1 }
+  
   has_secure_password
 end
