@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'logins#index'
-  get 'logins/new'
   
   resources :nurses
+  
+  get    '/login',   to: 'logins#new'
+  post   '/login',   to: 'logins#create'
+  delete '/logout',  to: 'logins#destroy'
 end
