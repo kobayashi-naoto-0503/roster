@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root 'logins#index'
   
   resources :nurses
   
-  get    '/login',   to: 'logins#new'
-  post   '/login',   to: 'logins#create'
-  delete '/logout',  to: 'logins#destroy'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 end
