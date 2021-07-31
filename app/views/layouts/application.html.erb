@@ -17,34 +17,34 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
       <div class="container">
         <%= link_to "#" do %>
-          <span><%= image_tag "#", class: "navbar-brand" %></span>
+          <span><%#= image_tag "#", class: "navbar-brand" %></span>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <li>
               <%= link_to "#" do %>
-                <%= image_tag "#" %>
+                <%#= image_tag "#" %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <%= image_tag "#" %>
+              <%= link_to new_nurse_path do %>
+                <%= "職員登録" %>
               <% end %>
             </li>
             <li>
               <%= link_to logout_path, method: :delete do %>
-                <%= image_tag "ログアウト" %>
+                <%= "ログアウト" %>
               <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to "#" do %>
-                <%= image_tag "#" %>
+                <%#= image_tag "#" %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <%= image_tag "#" %>
+                <%#= image_tag "#" %>
               <% end %>
             </li>
           <% end %>

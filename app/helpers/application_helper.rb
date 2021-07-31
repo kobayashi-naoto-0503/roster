@@ -1,6 +1,6 @@
 module ApplicationHelper
   def current_user
-    @current_nurse ||= Nurse.find_by(id: login[:nurse_id])
+    @current_user ||= Nurse.find_by(id: session[:nurse_id])
   end
 
   def logged_in?
