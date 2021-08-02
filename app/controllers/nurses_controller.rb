@@ -1,6 +1,12 @@
 class NursesController < ApplicationController
+  before_action :user_logged_in?
+  
   def new
     @nurse = Nurse.new
+  end
+  
+  def index
+    @nurse = Nurse.all
   end
   
   def create

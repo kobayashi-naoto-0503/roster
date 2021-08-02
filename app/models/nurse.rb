@@ -9,4 +9,7 @@ class Nurse < ApplicationRecord
   enum authority: { yes: 0, no: 1 }
   
   has_secure_password
+  
+  has_many:hope_holiday
+  belongs_to:term
 end

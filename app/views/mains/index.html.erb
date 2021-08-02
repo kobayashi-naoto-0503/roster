@@ -1,0 +1,16 @@
+<div class="mains-index-wrapper">
+  <div class="container">
+    <h1 class="text-center text-white">○○月勤務表</h1>
+    <% @nurses.each do |nurse| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="mains-index-single">
+            <h2 class="mains-author">
+              <%= nurse.name %>
+            </h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
