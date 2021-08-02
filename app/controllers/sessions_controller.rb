@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :forbid_login_user, {only: [:new]}
+  
   def new
   end
   
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
     nurse = Nurse.find_by(staff_id: params[:session][:staff_id])
     if nurse && nurse.authenticate(params[:session][:password])
       log_in nurse
-      redirect_to root_path, success: 'ログインに成功しました'
+      redirect_to mains_index_path, success: 'ログインに成功しました'
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
