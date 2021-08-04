@@ -1,2 +1,35 @@
-<h1>Terms#new</h1>
-<p>Find me in app/views/terms/new.html.erb</p>
+<div class="terms-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 terms-new-container">
+        <h1 class="text-center text-white">雇用条件</h1>
+        <h2 class="topic-author">
+          <%= @nurse.name %>
+        </h2>
+        <%= form_for @term do |f| %>
+          <div class="form-group">
+            <%= f.label :"雇用形態", class: 'text-white' %>
+            <%= f.select :employment, options_for_select_from_enum(Term, :employment), class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"日勤", class: 'text-white' %>
+            <%= f.select :day_shift, options_for_select_from_enum(Term, :day_shift),class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"夜勤", class: 'text-white' %>
+            <%= f.select :night_shift, options_for_select_from_enum(Term, :night_shift),class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"夜勤明け", class: 'text-white' %>
+            <%= f.select :after_night_shift, options_for_select_from_enum(Term, :after_night_shift), class: 'form-control' %>
+          </div>
+          
+          <%= f.hidden_field:nurse_id, :value => params[:nurse_id] %>
+
+          <%= f.submit "登録", class: 'btn-block btn-white' %>
+        <% end %>
+        <%= link_to '戻る', nurse_path(@nurse.id),class: 'text-white' %>
+      </div>
+    </div>
+  </div>
+</div>
