@@ -1,12 +1,12 @@
 class NursesController < ApplicationController
-  before_action :user_logged_in?
+  #before_action :user_logged_in?
   
   def new
     @nurse = Nurse.new
   end
   
-  def index
-    @nurse = Nurse.all
+  def show
+    @nurse = Nurse.find_by(params[:nurse_id])
   end
   
   def create

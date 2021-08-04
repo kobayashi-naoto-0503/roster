@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       end
     end
     return if @current_user #@current_userにログイン情報を保存していなければ、リダイレクトする。
-      flash[:referer] = request.fullpath #リクエストurlを取得[よくわからないから質問する]
+      flash[:referer] = request.fullpath #リクエストurlを取得
       redirect_to root_path 
   end
   

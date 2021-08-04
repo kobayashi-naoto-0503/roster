@@ -15,3 +15,16 @@ ja:
       authority:
         yes: 有
         no: 無
+    term:
+      employment:
+        a: 常勤
+        b: 非常勤
+      day_shift:
+        yes: 可
+        no: 否
+      night_shift:
+        ok: 可
+        ng: 否
+      after_night_shift:
+        y: 可
+        n: 否
