@@ -13,15 +13,15 @@ ja:
         i: "臨時病棟１"
         j: "臨時病棟２"
       authority:
-        yes: 有
-        no: 無
+        k: 有
+        l: 無
     term:
       employment:
         a: 常勤
         b: 非常勤
       day_shift:
-        yes: 可
-        no: 否
+        c: 可
+        d: 否
       night_shift:
         ok: 可
         ng: 否
