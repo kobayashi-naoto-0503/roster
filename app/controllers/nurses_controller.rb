@@ -6,7 +6,9 @@ class NursesController < ApplicationController
   end
   
   def show
-    @nurse = Nurse.find_by(params[:nurse_id])
+    @nurse = Nurse.find_by(id: params[:id])
+    #Nurse.find_by(id: params[:id])でNurseテーブルから、リンク元（ここではmainのindexview）からnurse_path(nurse.id)でリンクした名前のidを
+    #取得し、このshowメソッドでそのidを使って検索している。
   end
   
   def create

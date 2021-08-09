@@ -1,2 +1,27 @@
-<h1>HopeHolidays#new</h1>
-<p>Find me in app/views/hope_holidays/new.html.erb</p>
+<div class="terms-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 terms-new-container">
+        <h1 class="text-center text-white">休み希望</h1>
+        <h2 class="topic-author">
+          <%= @nurse.name %>
+        </h2>
+        <%= form_for @hope_holiday do |f| %>
+          <div class="form-group">
+            <%= f.label :"休み希望１", class: 'text-white' %>
+            <%= f.text :hope_holiday, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"休み種類", class: 'text-white' %>
+            <%= f.select :holiday_type, options_for_select_from_enum(Hope_holiday, :holiday_type),class: 'form-control' %>
+          </div>
+          
+          <%= f.hidden_field:nurse_id, :value => params[:nurse_id] %>
+
+          <%= f.submit "登録", class: 'btn-block btn-white' %>
+        <% end %>
+        <%= link_to '戻る', nurse_path(@nurse.id),class: 'text-white' %>
+      </div>
+    </div>
+  </div>
+</div>
