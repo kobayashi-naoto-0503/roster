@@ -2,7 +2,7 @@ class TermsController < ApplicationController
   #before_action :user_logged_in?
   
   def new
-    @nurse = Nurse.find_by(params[:nurse_id])
+    @nurse = Nurse.find_by(id: params[:id])
     @term = Term.new
   end
   

@@ -3,5 +3,6 @@ class MainsController < ApplicationController
   
   def index
     @nurses = Nurse.all
+    @nurse = Nurse.find_by(id: params[:id])
   end
 end

@@ -10,6 +10,6 @@ class Nurse < ApplicationRecord
   
   has_secure_password
   
-  #has_many:hope_holiday
+  has_many:hope_holiday
   has_one:term
 end

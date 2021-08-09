@@ -28,3 +28,8 @@ ja:
       after_night_shift:
         y: 可
         n: 否
+    hope_holiday:
+      holiday_type:
+        a: 公 #公休
+        b: 有 #有休
+        c: リ #リフレッシュ休暇
