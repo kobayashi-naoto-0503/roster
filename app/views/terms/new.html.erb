@@ -6,7 +6,7 @@
         <h2 class="topic-author">
           <%= @nurse.name %>
         </h2>
-        <%= form_for @term do |f| %>
+        <%= form_for @term, url: terms_create_path do |f| %>
           <div class="form-group">
             <%= f.label :"雇用形態", class: 'text-white' %>
             <%= f.select :employment, options_for_select_from_enum(Term, :employment), class: 'form-control' %>
@@ -24,7 +24,7 @@
             <%= f.select :after_night_shift, options_for_select_from_enum(Term, :after_night_shift), class: 'form-control' %>
           </div>
           
-          <%= f.hidden_field:nurse_id, :value => params[:nurse_id] %>
+          <%= f.hidden_field:nurse_id, :value => params[:id] %>
 
           <%= f.submit "登録", class: 'btn-block btn-white' %>
         <% end %>
