@@ -9,14 +9,14 @@ class TermsController < ApplicationController
   def create
     @term = Term.new(term_params)
     if @term.save
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to nurse_path, success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
   end
   
-  def nurse_params
+  def term_params
     params.require(:term).permit(:employment, :day_shift, :night_shift, :after_night_shift, :nurse_id)
   end
 end

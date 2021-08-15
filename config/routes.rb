@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get '/nurses/:id', to: 'nurses#index'
   
   get '/terms/:id/new', to: 'terms#new', as: 'terms'
-  #post '/comments/:id/create', to: 'comments#create', as: 'comments_create'
+  post '/terms/:id/create', to: 'terms#create', as: 'terms_create'
   
   get '/hope_holidays/:id/new', to: 'hope_holidays#new', as: 'hope_holidays'
-  #post '/comments/:id/create', to: 'comments#create', as: 'comments_create'
+  post '/hope_holidays/:id/create', to: 'hope_holidays#create', as: 'hope_holidays_create'
 end
