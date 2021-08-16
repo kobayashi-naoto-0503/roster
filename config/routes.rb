@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   
   get '/hope_holidays/:id/new', to: 'hope_holidays#new', as: 'hope_holidays'
   post '/hope_holidays/:id/create', to: 'hope_holidays#create', as: 'hope_holidays_create'
+  
+  get '/leaves/:id/new', to: 'leaves#new', as: 'leaves'
+  post '/leaves/:id/create', to: 'leaves#create', as: 'leaves_create'
 end
