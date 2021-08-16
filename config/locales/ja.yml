@@ -33,3 +33,7 @@ ja:
         a: 公 #公休
         b: 有 #有休
         c: リ #リフレッシュ休暇
+    leave:
+      leave_type:
+        a: 産
+        b: 育

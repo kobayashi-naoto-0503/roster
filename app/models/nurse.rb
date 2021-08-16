@@ -12,4 +12,5 @@ class Nurse < ApplicationRecord
   
   has_many:hope_holiday
   has_one:term
+  has_many:leave
 end
