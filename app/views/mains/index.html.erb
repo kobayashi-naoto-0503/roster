@@ -1,44 +1,26 @@
 <div class="mains-index-wrapper">
-  <div class="container">
-    <h1 class="text-center text-white">○○月勤務表</h1>
+    <h1 class="text-center text-white"><%= @now.next_month.month %> 月勤務表</h1>
+    <table>
+      <tr>
+        <th> </th>
+        <% @day.times do |day| %>
+          <th>day</th>
+        <% end %>
+      </tr>
     <% @nurses.each do |nurse| %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="mains-index-single">
-            <h2 class="mains-author">
+          <tr>
+            <td>
               <%= link_to nurse_path(nurse.id) do %>
-                    <%= nurse.name %>
+                <%= nurse.name %>
               <% end %>
-            </h2>
-          </div>
-        </div>
-      </div>
+            </td>
+            <td>日</td>
+            <td>日</td>
+            <td>夜</td>
+            <td>明</td>
+            <td>公</td>
+            <td>日</td>
+          </tr>
     <% end %>
-  </div>
+    </table>
 </div>
-<table>
-  <tr>
-    <th>都道府県</th>
-    <th>面積</th>
-    <th>人口</th>
-    <th>人口密度</th>
-  </tr>
-  <tr>
-    <td>愛知県</td>
-    <td>5,172km2</td>
-    <td>7,526,911人</td>
-    <td>1,455人/km2</td>
-  </tr>
-  <tr>
-    <td>東京都</td>
-    <td>2,193km2</td>
-    <td>13,742,906人</td>
-    <td>6,263人/km2</td>
-  </tr>
-  <tr>
-    <td>大阪府</td>
-    <td>1,905km2</td>
-    <td>8,831,642人</td>
-    <td>4,635人/km2</td>
-  </tr>
-</table>
