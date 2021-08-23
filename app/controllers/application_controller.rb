@@ -31,7 +31,9 @@ class ApplicationController < ActionController::Base
   def forbid_login_user 
     if session[:nurse_id] 
       flash[:notice]="ログイン中です"
-      redirect_to mains_index_path 
+      redirect_to new_main_path 
     end
   end
+  
+
 end
