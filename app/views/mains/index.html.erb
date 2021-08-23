@@ -4,23 +4,24 @@
       <tr>
         <th> </th>
         <% @day.times do |day| %>
-          <th>day</th>
+          <% i = 1 %>
+          <th><%= i += day %></th>
         <% end %>
       </tr>
-    <% @nurses.each do |nurse| %>
-          <tr>
-            <td>
-              <%= link_to nurse_path(nurse.id) do %>
-                <%= nurse.name %>
-              <% end %>
-            </td>
-            <td>日</td>
-            <td>日</td>
-            <td>夜</td>
-            <td>明</td>
-            <td>公</td>
-            <td>日</td>
-          </tr>
-    <% end %>
+      <% @nurses.each do |nurse| %>
+      <tr>
+        <td>
+          <%= link_to nurse_path(nurse.id) do %>
+            <%= nurse.name %>
+          <% end %>
+        </td>
+        <td>日</td>
+        <td>日</td>
+        <td>夜</td>
+        <td>明</td>          
+        <td>公</td>
+        <td>日</td>
+      </tr>
+      <% end %>
     </table>
 </div>
