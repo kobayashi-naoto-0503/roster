@@ -1,0 +1,29 @@
+<div class="mains-index-wrapper">
+    <h1 class="text-center text-white"><%= @now.next_month.month %> 月勤務表</h1>
+    <table>
+      <tr>
+        <th> </th>
+        <th> </th>
+        <% @day.times do |day| %>
+          
+          <th><%= @one_day %></th>
+          <% @one_day += 1 %>
+        <% end %>
+      </tr>
+      <% @nurses.each do |nurse| %>
+      <tr>
+        <td>
+          <%= @term.find(1).employment %>
+        </td>
+        <td>
+          <%= link_to nurse_path(nurse.id) do %>
+            <%= nurse.name %>
+          <% end %>
+        </td>
+        <% @day.times do |t| %> 
+          <td><%= @term.find(1).day_shift %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+</div>

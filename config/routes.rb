@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'mains/index'
   get 'sessions/new'
   root 'logins#index'
   
   resources :nurses
+  resources :mains
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
