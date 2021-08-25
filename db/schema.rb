@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_111821) do
+ActiveRecord::Schema.define(version: 2021_08_25_125845) do
 
   create_table "hope_holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "nurse_id"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 2021_08_16_111821) do
     t.integer "leave_type"
     t.datetime "start_at"
     t.datetime "end_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nurse_holiday_schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "nurse_id"
+    t.datetime "work_day"
+    t.integer "work_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nurse_work_schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "nurse_id"
+    t.datetime "work_day"
+    t.integer "work_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

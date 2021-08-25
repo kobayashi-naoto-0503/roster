@@ -12,16 +12,23 @@
       </tr>
       <% @nurses.each do |nurse| %>
       <tr>
-        <td>
-          <%= @term.find(1).employment %>
-        </td>
-        <td>
-          <%= link_to nurse_path(nurse.id) do %>
-            <%= nurse.name %>
+        <% @terms.each do |term| %>
+          <td>
+            <%= term.employment %>
+          </td>
+          <td>
+            <%= link_to nurse_path(nurse.id) do %>
+              <%= nurse.name %>
+            <% end %>
+          </td>
+          <% @day.times do |t| %> 
+            <td>
+            <%= form_for @nurse_work_schdules, url: "#" do |w| %>
+              <%#= f.select :shift, [['日',1 ], ['夜',2 ], ['明',3], ['公',4], ['有',5], ['リ',6], ['産',7], ['育',8]], { selected: 1 }, { class: 'form-control'} %>
+              <% w.select :work_type, options_for_select_from_enum(NurseWorkSchedule, :work_type), class: 'form-control' %>
+            <% end %>
+            </td>
           <% end %>
-        </td>
-        <% @day.times do |t| %> 
-          <td><%= @term.find(1).day_shift %></td>
         <% end %>
       </tr>
       <% end %>

@@ -37,3 +37,14 @@ ja:
       leave_type:
         a: 産
         b: 育
+    nurseworkschedule:
+      work_type:
+        a: 日
+        b: 夜
+        c: 明
+    nurseholidayschedule:
+      work_type:
+        a: 公
+        b: 有
+        c: リ
+      
