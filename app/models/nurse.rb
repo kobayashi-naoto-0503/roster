@@ -13,4 +13,6 @@ class Nurse < ApplicationRecord
   has_many:hope_holiday
   has_one:term
   has_many:leave
+  has_many:nurse_work_schdule
+  has_many:nurse_holiday_schedule
 end
