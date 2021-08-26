@@ -17,8 +17,8 @@ ja:
         l: 無
     term:
       employment:
-        a: 常勤
-        b: 非常勤
+        a: 常
+        b: 非
       day_shift:
         c: 可
         d: 否
@@ -47,4 +47,3 @@ ja:
         a: 公
         b: 有
         c: リ
-      

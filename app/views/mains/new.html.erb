@@ -2,8 +2,8 @@
     <h1 class="text-center text-white"><%= @now.next_month.month %> 月勤務表</h1>
     <table>
       <tr>
-        <th> </th>
-        <th> </th>
+        <th class="fixed01"> </th>
+        <th class="fixed02"> </th>
         <% @day.times do |day| %>
           
           <th><%= @one_day %></th>
@@ -13,10 +13,11 @@
       <% @nurses.each do |nurse| %>
       <tr>
         <% @terms.each do |term| %>
-          <td>
-            <%= term.employment %>
+          <td class="fixed01">
+            <%= term.employment_i18n %> 
+            <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
           </td>
-          <td>
+          <td class="fixed02">
             <%= link_to nurse_path(nurse.id) do %>
               <%= nurse.name %>
             <% end %>
