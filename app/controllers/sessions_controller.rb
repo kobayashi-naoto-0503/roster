@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_user, {only: [:new]}
+  skip_before_action :user_logged_in?
   
   def new
   end

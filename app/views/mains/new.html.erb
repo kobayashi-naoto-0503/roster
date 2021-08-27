@@ -1,37 +1,34 @@
 <div class="mains-index-wrapper">
-    <h1 class="text-center text-white"><%= @now.next_month.month %> 月勤務表</h1>
+    <h1 class="text-center text-white"><%= Date.current.next_month.month %> 月勤務表</h1>
     <table>
       <tr>
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
-        <% @day.times do |day| %>
-          
-          <th><%= @one_day %></th>
-          <% @one_day += 1 %>
+        <% (1..@day).each do |day| %>
+          <th><%= day %></th>
         <% end %>
       </tr>
       <% @nurses.each do |nurse| %>
-      <tr>
-        <% @terms.each do |term| %>
-          <td class="fixed01">
-            <%= term.employment_i18n %> 
-            <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
-          </td>
-          <td class="fixed02">
-            <%= link_to nurse_path(nurse.id) do %>
-              <%= nurse.name %>
-            <% end %>
-          </td>
-          <% @day.times do |t| %> 
-            <td>
-            <%= form_for @nurse_work_schdules, url: "#" do |w| %>
-              <%#= f.select :shift, [['日',1 ], ['夜',2 ], ['明',3], ['公',4], ['有',5], ['リ',6], ['産',7], ['育',8]], { selected: 1 }, { class: 'form-control'} %>
-              <% w.select :work_type, options_for_select_from_enum(NurseWorkSchedule, :work_type), class: 'form-control' %>
-            <% end %>
+        <tr>
+          <% @terms.each do |term| %>
+            <td class="fixed01">
+              <%= term.employment_i18n %> 
+              <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
+            <td class="fixed02">
+              <%= link_to nurse_path(nurse.id) do %>
+                <%= nurse.name %>
+              <% end %>
+            </td>
+              <% @day.times do |t| %> 
+                <td>
+                  <%= form_for @nurse_work_schdules, url: "#" do |w| %>
+                    <% w.select :work_type, options_for_select(options_for_select_from_enum(NurseWorkSchedule, :work_type),term), class: 'form-control' %>
+                  <% end %>
+                </td>
+              <% end %>
           <% end %>
-        <% end %>
-      </tr>
+        </tr>
       <% end %>
     </table>
 </div>

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :info, :warning, :danger
+  before_action :user_logged_in?
   
   def current_user
     @current_user ||= Nurse.find_by(id: session[:nurse_id])
