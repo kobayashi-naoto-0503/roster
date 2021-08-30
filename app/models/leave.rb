@@ -1,6 +1,6 @@
 class Leave < ApplicationRecord
   
-  enum leave_type: { a: 0, b: 1 }
+  enum leave_type: { maternity_leave: 0, childcare_leave: 1 }
   
   belongs_to:nurse
 end
