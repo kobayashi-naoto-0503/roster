@@ -5,10 +5,13 @@ class Term < ApplicationRecord
   validates :after_night_shift, presence: true
   validates :nurse_id, presence: true
   
-  enum employment: { a: 0, b: 1 }
-  enum day_shift: { c: 0, d: 1 }
-  enum night_shift: { ok: 0, ng: 1 }
-  enum after_night_shift: { y: 0, n: 1 }
+  enum employment: { full_time: 0, part_time: 1 }
+  enum day_shift: { possible: true, impossible: false }
+  enum night_shift: { possible2: true, impossible2: false }
+  enum after_night_shift: { possible3: true, impossible3: false }
+  validates :day_shift, inclusion: {in: ["possible", "impossible"]}
+  validates :night_shift, inclusion: {in: ["possible2", "impossible2"]}
+  validates :after_night_shift, inclusion: {in: ["possible3", "impossible3"]}
   
   belongs_to:nurse
   

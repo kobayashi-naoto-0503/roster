@@ -1,49 +1,49 @@
 ja:
   enums:              #enum型に対する日本語定義であることを明示するために記述
     nurse:           #モデル名を指定
-      affiliation:           #カラム名を指定
-        a: "システム科"     #Enumの名前定義①
-        b: "看護部長"   #Enumの名前定義②
-        c: "２A病棟"      #Enumの名前定義③
-        d: "２B病棟"
-        e: "３A病棟"
-        f: "３B病棟"
-        g: "４A病棟"
-        h: "５A病棟"
-        i: "臨時病棟１"
-        j: "臨時病棟２"
-      authority:
-        k: 有
-        l: 無
-    term:
-      employment:
-        a: 常
-        b: 非
+      affiliation:           #所属
+        system_department: "システム科"     
+        nursing_manager: "看護部長"   
+        ward_2a: "２A病棟"      
+        ward_2b: "２B病棟"
+        ward_3a: "３A病棟"
+        ward_3b: "３B病棟"
+        ward_4a: "４A病棟"
+        ward_5a: "５A病棟"
+        temporary_ward_1: "臨時病棟１"
+        temporary_ward_2: "臨時病棟２"
+      authority: 　　　　　#勤務表を作れる権限
+        impossible: 無
+        possible: 有
+    term: 　　　　　　　　　#就業条件
+      employment: 　　　　　#雇用形態
+        full_time: 常 　　　#常勤
+        part_time: 非 　　　#非常勤
       day_shift:
-        c: 可
-        d: 否
+        possible: 可
+        impossible: 否
       night_shift:
-        ok: 可
-        ng: 否
+        possible2: 可
+        impossible2: 否
       after_night_shift:
-        y: 可
-        n: 否
-    hopeholiday:
+        possible3: 可
+        impossible3: 否
+    hopeholiday:            #希望休
       holiday_type:
-        a: 公 #公休
-        b: 有 #有休
-        c: リ #リフレッシュ休暇
-    leave:
+        public_holiday: 公  #公休
+        paid_holiday: 有    #有休
+        refresh_vacation: リ #リフレッシュ休暇
+    leave:                  #長期休暇
       leave_type:
-        a: 産
-        b: 育
+        maternity_leave: 産 #産休
+        childcare_leave: 育 #育休
     nurseworkschedule:
       work_type:
-        a: 日
-        b: 夜
-        c: 明
+        day_shift: 日
+        night_shift: 夜
+        after_night_shift: 明
     nurseholidayschedule:
       work_type:
-        a: 公
-        b: 有
-        c: リ
+        public_holiday: 公
+        paid_holiday: 有
+        refresh_vacation: リ

@@ -12,7 +12,7 @@
         <tr>
           <% @terms.each do |term| %>
             <td class="fixed01">
-              <%= term.employment_i18n %> 
+              <%= term.employment %> 
               <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
             <td class="fixed02">
