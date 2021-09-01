@@ -12,22 +12,10 @@ ja:
         ward_5a: "５A病棟"
         temporary_ward_1: "臨時病棟１"
         temporary_ward_2: "臨時病棟２"
-      authority: 　　　　　#勤務表を作れる権限
-        impossible: 無
-        possible: 有
-    term: 　　　　　　　　　#就業条件
-      employment: 　　　　　#雇用形態
-        full_time: 常 　　　#常勤
-        part_time: 非 　　　#非常勤
-      day_shift:
-        possible: 可
-        impossible: 否
-      night_shift:
-        possible2: 可
-        impossible2: 否
-      after_night_shift:
-        possible3: 可
-        impossible3: 否
+    term:                   #就業条件
+      employment:           #雇用形態
+        full_time:  常      #常勤
+        part_time:  非      #非常勤
     hopeholiday:            #希望休
       holiday_type:
         public_holiday: 公  #公休
