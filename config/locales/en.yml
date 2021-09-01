@@ -31,14 +31,4 @@
 
 en:
   hello: "Hello world"
-  enums:
-    term:
-      day_shift:
-        possible: 可
-        impossible: 否
-      night_shift:
-        possible2: 可
-        impossible2: 否
-      after_night_shift:
-        possible3: 可
-        impossible3: 否
+  

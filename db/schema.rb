@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_123708) do
+ActiveRecord::Schema.define(version: 2021_09_01_133253) do
 
   create_table "hope_holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "nurse_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_123708) do
     t.integer "affiliation"
     t.integer "staff_id"
     t.string "name"
-    t.integer "authority"
+    t.boolean "authority", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 2021_08_30_123708) do
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "nurse_id"
     t.integer "employment"
-    t.boolean "day_shift"
-    t.boolean "night_shift"
-    t.boolean "after_night_shift"
+    t.boolean "day_shift", default: false, null: false
+    t.boolean "night_shift", default: false, null: false
+    t.boolean "after_night_shift", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

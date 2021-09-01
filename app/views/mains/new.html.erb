@@ -12,7 +12,7 @@
         <tr>
           <% @terms.each do |term| %>
             <td class="fixed01">
-              <%= term.employment %> 
+              <%= term.employment_i18n %> 
               <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
             <td class="fixed02">
@@ -23,7 +23,7 @@
               <% @day.times do |t| %> 
                 <td>
                   <%= form_for @nurse_work_schdules, url: "#" do |w| %>
-                    <% w.select :work_type, options_for_select(options_for_select_from_enum(NurseWorkSchedule, :work_type),term), class: 'form-control' %>
+                    <% w.select :work_type, options_for_select_from_enum(NurseWorkSchedule, :work_type), class: 'form-control' %>
                   <% end %>
                 </td>
               <% end %>
