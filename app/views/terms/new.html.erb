@@ -13,15 +13,15 @@
           </div>
           <div class="form-group">
             <%= f.label :"日勤", class: 'text-white' %>
-            <%= f.select :day_shift, options_for_select_from_enum(Term, :day_shift),class: 'form-control' %>
+            <%= f.select :day_shift, yes_no_select_option,class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :"夜勤", class: 'text-white' %>
-            <%= f.select :night_shift, options_for_select_from_enum(Term, :night_shift),class: 'form-control' %>
+            <%= f.select :night_shift, yes_no_select_option,class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :"夜勤明け", class: 'text-white' %>
-            <%= f.select :after_night_shift, options_for_select_from_enum(Term, :after_night_shift), class: 'form-control' %>
+            <%= f.select :after_night_shift, yes_no_select_option, class: 'form-control' %>
           </div>
           
           <%= f.hidden_field:nurse_id, :value => params[:id] %>
