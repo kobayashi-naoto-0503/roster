@@ -6,4 +6,8 @@ module ApplicationHelper
   def logged_in?
     !current_user.nil?
   end
+  
+  def yes_no_select_option
+    [["否",0],["可",1]]
+  end
 end

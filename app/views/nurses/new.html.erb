@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <%= f.label :"管理者権限", class: 'text-white' %>
-            <%= f.select :authority, options_for_select_from_enum(Nurse, :authority), class: 'form-control' %>
+            <%= f.select :authority, yes_no_select_option, class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :password, class: 'text-white' %>
