@@ -23,7 +23,7 @@
               <% @day.times do |t| %> 
                 <td>
                   <%= form_for @nurse_work_schdules, url: "#" do |w| %>
-                    <% w.select :work_type, options_for_select_from_enum(NurseWorkSchedule, :work_type), class: 'form-control' %>
+                    <% w.select :work_type, select_condition(term), class: 'form-control' %>
                   <% end %>
                 </td>
               <% end %>
