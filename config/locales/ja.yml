@@ -30,8 +30,6 @@ ja:
         day_shift: 日
         night_shift: 夜
         after_night_shift: 明
-    nurseholidayschedule:
-      work_type:
         public_holiday: 公
         paid_holiday: 有
         refresh_vacation: リ

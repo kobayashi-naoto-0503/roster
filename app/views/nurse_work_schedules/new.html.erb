@@ -8,11 +8,11 @@
           <th><%= day %></th>
         <% end %>
       </tr>
-      <% @nurses.each do |nurse| %>
-        <tr>
-          <% @terms.each do |term| %>
+      <%= form_tag(nurse_work_schedules_path, method: :post) do |w| %>
+        <% @nurses.each do |nurse| %>
+          <tr>
             <td class="fixed01">
-              <%= term.employment_i18n %> 
+              <%= nurse_select(nurse).employment_i18n %> 
               <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
             <td class="fixed02">
@@ -20,15 +20,17 @@
                 <%= nurse.name %>
               <% end %>
             </td>
-              <% @day.times do |t| %> 
+          <%# binding.pry %>
+              <% @day.times do |t| %>
                 <td>
-                  <%= form_for @nurse_work_schdules, url: "#" do |w| %>
-                    <% w.select :work_type, select_condition(term), class: 'form-control' %>
-                  <% end %>
+                  <%= select_tag( "work_type_#{t}", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type') %>
+                  <%#= w.hidden_field:work_day, :value => "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t}" %>
+                  <%#= w.hidden_field:nurse_id, :value =>  nurse.id%>
                 </td>
               <% end %>
-          <% end %>
-        </tr>
+          </tr>
+        <% end %>
+        <%= submit_tag( "登録", class: 'btn-block btn-white' )%>
       <% end %>
     </table>
 </div>
