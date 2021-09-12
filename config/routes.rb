@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'logins#index'
   
   resources :nurses
-  resources :mains
+  resources :nurse_work_schedules
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
