@@ -9,6 +9,7 @@
         <% end %>
       </tr>
       <%= form_tag(nurse_work_schedules_path, method: :post) do |w| %>
+      <% i = 1 %>
         <% @nurses.each do |nurse| %>
           <tr>
             <td class="fixed01">
@@ -22,11 +23,14 @@
             </td>
           <%# binding.pry %>
               <% @day.times do |t| %>
+                
                 <td>
-                  <%= select_tag( "work_type_#{t}", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type') %>
-                  <%#= w.hidden_field:work_day, :value => "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t}" %>
-                  <%#= w.hidden_field:nurse_id, :value =>  nurse.id%>
+                  <%= select_tag "work_type_#{i}[work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
+                  <%= hidden_field_tag "work_type_#{i}[datetime]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
+                  <%= hidden_field_tag "work_type_#{i}[nurse_id]", nurse.id%>
                 </td>
+              
+                <% i += 1 %>
               <% end %>
           </tr>
         <% end %>
@@ -34,3 +38,7 @@
       <% end %>
     </table>
 </div>
+
+  <%#= select_tag "#{nurse.name}#{t+1}[work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
+  <%#= hidden_field_tag "#{nurse.name}#{t+1}[datetime]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
+  <%#= hidden_field_tag "#{nurse.name}#{t+1}[nurse_id]", nurse.id%>
