@@ -1,4 +1,4 @@
-module MainsHelper
+module NurseWorkSchedulesHelper
   
   def nurse_select(nurse)
     Term.find_by(nurse_id: nurse.id)
@@ -17,5 +17,6 @@ module MainsHelper
     hash["リ"] = 5
     return hash
   end  
+  
 end
 
