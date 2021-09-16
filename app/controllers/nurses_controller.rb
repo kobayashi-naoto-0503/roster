@@ -20,6 +20,7 @@ class NursesController < ApplicationController
     end
   end
   
+  private
   def nurse_params
     params.require(:nurse).permit(:affiliation, :staff_id, :name, :authority, :password, :password_confirmation)
   end

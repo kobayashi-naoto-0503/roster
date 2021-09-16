@@ -14,6 +14,7 @@ class LeavesController < ApplicationController
     end
   end
   
+  private
   def leave_params
     params.require(:leave).permit(:leave_type, :start_at, :end_at, :nurse_id)
   end

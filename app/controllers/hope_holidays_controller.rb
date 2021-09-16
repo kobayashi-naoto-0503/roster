@@ -17,6 +17,7 @@ class HopeHolidaysController < ApplicationController
     end
   end
   
+  private
   def hope_holiday_params
     params.require(:hope_holiday).permit(:hope_holiday, :holiday_type, :nurse_id)
   end

@@ -14,7 +14,20 @@ class NurseWorkSchedulesController < ApplicationController
   end
   
   def create
-    binding.pry
+    nurses = Nurse.all
+    nurse_params_array =[]
+    nurses.each do |nurse|
+      nurse_params = params["nurse_#{nurse.id}"]
+      nurse_params.each{|key,value| nurse_params_array << value}
+    end
+    @nurse_work_schedule = NurseWorkSchedule.new(nurse_params_array)
+    if @nurse_work_schedule.save
+      
+      redirect_to nurse_path(@nurse.id), success: '登録が完了しました'
+    else
+      flash.now[:danger] = "登録に失敗しました"
+      render :new
+    end
   end
   
 end
