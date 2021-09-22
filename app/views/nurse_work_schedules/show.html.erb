@@ -1,14 +1,14 @@
 <div class="nurse-work-schedule-wrapper">
-    <h1 class="text-center text-white"><%= Date.current.next_month.month %> 月勤務表</h1>
+    <h1 class="text-center text-white">10月勤務表</h1>
     <table>
       <tr>
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
-        <% (1..@day).each do |day| %>
-          <th><%= day %></th>
-        <% end %>
+        <%# .each do |day| %>
+          <th><%= "day" %></th>
+        <%# end %>
       </tr>
-      <%= form_tag(nurse_work_schedules_path, method: :post) do |w| %>
+      
         <% @nurses.each do |nurse| %>
           <tr>
             <td class="fixed01">
@@ -20,17 +20,14 @@
                 <%= nurse.name %>
               <% end %>
             </td>
-              <% @day.times do |t| %>
+              <% 30.times do |t| %>
                 
                 <td>
-                  <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
-                  <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
-                  <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
+                  <%= t %>
                 </td>
               <% end %>
           </tr>
         <% end %>
-        <%= submit_tag( "登録", class: 'btn-block btn-white' )%>
-      <% end %>
+        
     </table>
 </div>
