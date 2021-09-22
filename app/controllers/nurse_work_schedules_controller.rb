@@ -1,7 +1,13 @@
 class NurseWorkSchedulesController < ApplicationController
   
   def index
+    @nurses = Nurse.all
     
+  end
+  
+  def show
+    @nurses = Nurse.all
+    @nurse = Nurse.find_by(id: params[:id])
   end
   
   def new
