@@ -1,12 +1,12 @@
 <div class="nurse-work-schedule-wrapper">
-    <h1 class="text-center text-white">10月勤務表</h1>
+    <h1 class="text-center text-white"><%= @date_end_time.month %>月勤務表</h1>
     <table>
       <tr>
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
-        <%# .each do |day| %>
-          <th><%= "day" %></th>
-        <%# end %>
+        <% @day.times do |day| %>
+          <th><%= "#{day+1}" %></th>
+        <% end %>
       </tr>
       
         <% @nurses.each do |nurse| %>
@@ -20,14 +20,12 @@
                 <%= nurse.name %>
               <% end %>
             </td>
-              <% 30.times do |t| %>
-                
+              <% @day.times do |t| %>
                 <td>
-                  <%= t %>
+                  <%= work_type_view(nurse)[t]%>
                 </td>
               <% end %>
           </tr>
         <% end %>
-        
     </table>
 </div>

@@ -2,12 +2,14 @@ class NurseWorkSchedulesController < ApplicationController
   
   def index
     @nurses = Nurse.all
-    
+    @nurse_work_schedules = NurseWorkSchedule.all
   end
   
   def show
+    @date_end_time = Date.new(params[:id].split("-")[0].to_i, params[:id].split("-")[1].to_i)
+    @day = @date_end_time.end_of_month.day
     @nurses = Nurse.all
-    @nurse = Nurse.find_by(id: params[:id])
+    @nurse_work_schedules = NurseWorkSchedule.all
   end
   
   def new
@@ -15,8 +17,6 @@ class NurseWorkSchedulesController < ApplicationController
     @nurse_holiday_schedules = NurseHolidaySchedule.new
     @day = Date.current.next_month.end_of_month.day.to_i #現在から見て1ヶ月後の日時の最終日を数値型で取得
     @nurses = Nurse.all
-    
-    #binding.pry
   end
   
   def create

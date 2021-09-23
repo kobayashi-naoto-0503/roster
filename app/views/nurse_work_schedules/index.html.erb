@@ -3,13 +3,9 @@
     <h1 class="text-white"><%= "勤務表一覧" %></h1>
     <div class="row">
       <div class="col-md-offset-2 col-md-2">
-        <%= link_to '2021年10月', nurse_work_schedules_show_path, class: 'btn btn-block btn-white' %>
-      </div>
-      <div class="col-md-offset-1 col-md-2">
-        <%#= link_to 'Hope_holiday', hope_holidays_path(@nurse.id), class: 'btn btn-block btn-white' %>
-      </div>
-      <div class="col-md-offset-1 col-md-2">
-        <%#= link_to 'Leave',  leaves_path(@nurse.id), class: 'btn btn-block btn-white' %>
+        <% work_schedule_index.each do |key,value| %>
+          <%= link_to "#{key}", nurse_work_schedule_path(value), class: 'btn btn-block btn-white' %>
+        <% end %>
       </div>
     </div>
   </div>
