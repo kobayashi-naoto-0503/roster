@@ -2,10 +2,18 @@
   <div class="container top-hero-container">
     <h1 class="text-white"><%= "勤務表一覧" %></h1>
     <div class="row">
-      <div class="col-md-offset-2 col-md-2">
-        <% work_schedule_index.each do |key,value| %>
-          <%= link_to "#{key}", nurse_work_schedule_path(value), class: 'btn btn-block btn-white' %>
+      <div class="col-md-offset-4 col-md-4">
+        <%= form_tag(nurse_work_schedules_show_path, method: :GET) do |w| %>
+          <%= select_year Date.today.year,prefix: :year_date%>
+          <%= select_month Date.new.month,prefix: :month_date%>
+          <%= submit_tag( "表示", class: 'btn-block btn-white') %>
         <% end %>
+        
+        
+        
+        <%# work_schedule_index.each do |key,value| %>
+          <%#= link_to "#{key}", nurse_work_schedule_path(value), class: 'btn btn-block btn-white' %>
+        <%# end %>
       </div>
     </div>
   </div>
