@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   root 'logins#index'
-  #get 'nurse_work_schedules/show'
+  get 'nurse_work_schedules/show'
   
   resources :nurses
   resources :nurse_work_schedules

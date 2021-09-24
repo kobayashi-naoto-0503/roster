@@ -6,8 +6,8 @@ class NurseWorkSchedulesController < ApplicationController
   end
   
   def show
-    @date_end_time = Date.new(params[:id].split("-")[0].to_i, params[:id].split("-")[1].to_i)
-    @day = @date_end_time.end_of_month.day
+    @month = params[:month_date]
+    #@day = Date.new(params[:id].split("-")[0].to_i, params[:id].split("-")[1].to_i)
     @nurses = Nurse.all
     @nurse_work_schedules = NurseWorkSchedule.all
   end
