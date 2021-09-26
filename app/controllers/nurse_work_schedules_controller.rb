@@ -6,8 +6,8 @@ class NurseWorkSchedulesController < ApplicationController
   end
   
   def show
-    @month = params[:month_date]
-    #@day = Date.new(params[:id].split("-")[0].to_i, params[:id].split("-")[1].to_i)
+    @month = params[:month_date][:month]
+    @day = Date.new(params[:year_date][:year].to_i, params[:month_date][:month].to_i).end_of_month.day
     @nurses = Nurse.all
     @nurse_work_schedules = NurseWorkSchedule.all
   end
@@ -17,6 +17,16 @@ class NurseWorkSchedulesController < ApplicationController
     @nurse_holiday_schedules = NurseHolidaySchedule.new
     @day = Date.current.next_month.end_of_month.day.to_i #現在から見て1ヶ月後の日時の最終日を数値型で取得
     @nurses = Nurse.all
+  end
+  
+  def edit
+    @nurse_work_schedule = NurseWorkSchedule.find(params[:id])
+  end
+  
+  def update
+    @nurse_work_schedule = NurseWorkSchedule.find(params[:id].to_i) #編集したデータを受け取っている。
+    @nurse_work_schedule.update(work_type_params) 
+    redirect_to  nurse_work_schedules_path
   end
   
   def create
@@ -41,6 +51,11 @@ class NurseWorkSchedulesController < ApplicationController
     #  flash.now[:danger] = "登録に失敗しました"
      # render :new
     #end
+  end
+  
+   private
+  def work_type_params
+    params.require(:nurse_work_schedule).permit(:work_type)
   end
   
 end
