@@ -22,7 +22,9 @@
             </td>
               <% @day.times do |t| %>
                 <td>
-                  <%= work_type_view(nurse)[t]%>
+                  <%= link_to edit_nurse_work_schedule_path(@nurse_work_schedules.where(nurse_id: nurse.id, work_day: Time.zone.parse("#{params[:year_date][:year]}-#{params[:month_date][:month]}-#{t+1}")).ids), method: :get do %>
+                    <%= work_type_view(nurse)[t]%>
+                  <% end %>
                 </td>
               <% end %>
           </tr>

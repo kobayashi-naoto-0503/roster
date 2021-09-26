@@ -1,0 +1,16 @@
+<div class="nurse-work-schedule-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 terms-new-container">
+        <h1 class="text-center text-white">勤務編集</h1>
+          <%= form_for @nurse_work_schedule do |f| %>
+            <div class="form-group">
+              <%= f.label :work_type, class: 'text-white' %>
+              <%= f.select :work_type, options_for_select_from_enum(NurseWorkSchedule, :work_type), class: 'form-control'%>
+              <%= f.submit '更新', class: 'btn-block btn-white' %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
