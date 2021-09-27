@@ -1,5 +1,15 @@
 module NurseWorkSchedulesHelper
   
+  def display_of_day_of_the_week_new_view(day)
+    days = ["日", "月", "火", "水", "木", "金", "土"]
+    return days[Date.new(Date.current.next_month.year, Date.current.next_month.month, day).wday]
+  end
+  
+  def display_of_day_of_the_week_show_view(day)
+    days = ["日", "月", "火", "水", "木", "金", "土"]
+    return days[Date.new(params[:year_date][:year].to_i, params[:month_date][:month].to_i, day+1).wday]
+  end
+  
   def nurse_select(nurse)
     Term.find_by(nurse_id: nurse.id)
   end
@@ -8,7 +18,6 @@ module NurseWorkSchedulesHelper
   def select_condition(nurse)
     term = Term.find_by(nurse_id: nurse.id)
     hash = {}
-    #array << ["day_shift",{:day=>t, :value=>0}] if term.day_shift  day=tで日付を持たせるかどうか
     hash["日"] = 0 if term.day_shift
     hash["夜"] = 1 if term.night_shift
     hash["明"] = 2 if term.after_night_shift
@@ -16,7 +25,19 @@ module NurseWorkSchedulesHelper
     hash["有"] = 4
     hash["リ"] = 5
     return hash
-  end  
+  end
+  
+  #def select_holiday(nurse,t)
+  #  hope_holidays = HopeHoliday.find_by(nurse_id: nurse.id)
+  #  schedule_date = Date.current.next_month
+  #  hope_holidays.each do |hope_holiday|
+  #    if hope_holiday.hope_holiday.year == schedule_date.year && hope_holiday.hope_holiday.month == schedule_date.month && hope_holiday.hope_holiday.day == t+1 
+  #      3 if hope_holiday.holiday_type == "public_holiday"
+  #      4 if hope_holiday.holiday_type == "paid_holiday"
+  #      5 if hope_holiday.holiday_type == "refresh_vacation"
+  #    end
+  #  end
+  #end
   
   def work_type_view(nurse)
     nurse_work_schedules = NurseWorkSchedule.where(nurse_id: nurse.id)
