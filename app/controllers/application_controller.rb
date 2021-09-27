@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   def forbid_login_user 
     if session[:nurse_id] 
       flash[:notice]="ログイン中です"
-      redirect_to  new_nurse_work_schedule_path 
+      redirect_to  nurse_work_schedules_path 
     end
   end
   

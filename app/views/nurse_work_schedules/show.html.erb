@@ -5,6 +5,13 @@
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
         <% @day.times do |day| %>
+          <th><%= display_of_day_of_the_week_show_view(day) %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <th class="fixed01"> </th>
+        <th class="fixed02"> </th>
+        <% @day.times do |day| %>
           <th><%= "#{day+1}" %></th>
         <% end %>
       </tr>
@@ -22,6 +29,7 @@
             </td>
               <% @day.times do |t| %>
                 <td>
+                  <%# whereメソッドでdatetimeカラムを検索する時は、Time.zone.parse使わないと、値に変換してくれない %>
                   <%= link_to edit_nurse_work_schedule_path(@nurse_work_schedules.where(nurse_id: nurse.id, work_day: Time.zone.parse("#{params[:year_date][:year]}-#{params[:month_date][:month]}-#{t+1}")).ids), method: :get do %>
                     <%= work_type_view(nurse)[t]%>
                   <% end %>
