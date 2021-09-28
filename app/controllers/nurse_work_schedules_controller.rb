@@ -17,6 +17,7 @@ class NurseWorkSchedulesController < ApplicationController
     @nurse_holiday_schedules = NurseHolidaySchedule.new
     @day = Date.current.next_month.end_of_month.day.to_i #現在から見て1ヶ月後の日時の最終日を数値型で取得
     @nurses = Nurse.all
+    @hope_holidays = HopeHoliday.all
   end
   
   def edit
@@ -25,8 +26,10 @@ class NurseWorkSchedulesController < ApplicationController
   
   def update
     @nurse_work_schedule = NurseWorkSchedule.find(params[:id].to_i) #編集したデータを受け取っている。
+    @nurse_work_schedule.work_day.year
     @nurse_work_schedule.update(work_type_params) 
-    redirect_to  nurse_work_schedules_path
+    redirect_to  nurse_work_schedule_path(year_date: {year: @nurse_work_schedule.work_day.year},month_date: {month: @nurse_work_schedule.work_day.month})
+    #pathでviewに送るidをコントローラーで取得し、渡す。
   end
   
   def create
