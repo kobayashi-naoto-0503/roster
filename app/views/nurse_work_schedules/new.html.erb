@@ -30,7 +30,11 @@
               <% @day.times do |t| %>
                 
                 <td>
-                  <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
+                  <%# if @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month}-#{t+1}")) %>
+                    <%#= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", %>
+                  <%# elsif %>
+                    <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
+                  <%# end %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
                 </td>

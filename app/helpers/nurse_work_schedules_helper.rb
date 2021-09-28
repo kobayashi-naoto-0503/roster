@@ -27,17 +27,11 @@ module NurseWorkSchedulesHelper
     return hash
   end
   
-  #def select_holiday(nurse,t)
-  #  hope_holidays = HopeHoliday.find_by(nurse_id: nurse.id)
-  #  schedule_date = Date.current.next_month
-  #  hope_holidays.each do |hope_holiday|
-  #    if hope_holiday.hope_holiday.year == schedule_date.year && hope_holiday.hope_holiday.month == schedule_date.month && hope_holiday.hope_holiday.day == t+1 
-  #      3 if hope_holiday.holiday_type == "public_holiday"
-  #      4 if hope_holiday.holiday_type == "paid_holiday"
-  #      5 if hope_holiday.holiday_type == "refresh_vacation"
-  #    end
-  #  end
-  #end
+  def select_holiday(nurse,t)
+      3 if hope_holiday.holiday_type == "public_holiday"
+      4 if hope_holiday.holiday_type == "paid_holiday"
+      5 if hope_holiday.holiday_type == "refresh_vacation"
+  end
   
   def work_type_view(nurse)
     nurse_work_schedules = NurseWorkSchedule.where(nurse_id: nurse.id)
