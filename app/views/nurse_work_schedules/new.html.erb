@@ -5,7 +5,13 @@
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
         <% (1..@day).each do |day| %>
-          <th><%= display_of_day_of_the_week_new_view(day) %></th>
+            <% if display_of_day_of_the_week_new_view(day) == "日" %>
+              <th class="red-color-of-display"><%= display_of_day_of_the_week_new_view(day)%></th>
+            <% elsif display_of_day_of_the_week_new_view(day) == "土" %>
+              <th class="blue-color-of-display"><%= display_of_day_of_the_week_new_view(day) %></th>
+            <% else %>
+              <th><%= display_of_day_of_the_week_new_view(day) %></th>
+            <% end %>
         <% end %>
       </tr>
       <tr>
@@ -30,11 +36,17 @@
               <% @day.times do |t| %>
                 
                 <td>
-                  <%# if @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month}-#{t+1}")) %>
-                    <%#= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", %>
-                  <%# elsif %>
+                  <% if @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
+                    <% if @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")).holiday_type == "public_holiday" %>
+                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[0,1,2,4,5]), class: 'form-control-holiday-type'%>
+                    <% elsif @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")).holiday_type == "paid_holiday"%>
+                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[0,1,2,3,5]), class: 'form-control-holiday-type'%>
+                    <% elsif @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")).holiday_type == "refresh_vacation"%>
+                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[0,1,2,3,4]), class: 'form-control-holiday-type'%>
+                    <% end %>
+                  <% else %>
                     <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), 0), class: 'form-control-work-type' %>
-                  <%# end %>
+                  <% end %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
                 </td>
