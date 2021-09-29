@@ -5,7 +5,13 @@
         <th class="fixed01"> </th>
         <th class="fixed02"> </th>
         <% @day.times do |day| %>
-          <th><%= display_of_day_of_the_week_show_view(day) %></th>
+          <% if display_of_day_of_the_week_show_view(day) == "日" %>
+            <th class="red-color-of-display"><%= display_of_day_of_the_week_show_view(day) %></th>
+          <% elsif display_of_day_of_the_week_show_view(day) == "土" %>
+            <th class="blue-color-of-display"><%= display_of_day_of_the_week_show_view(day) %></th>
+          <% else %>
+            <th><%= display_of_day_of_the_week_show_view(day) %></th>
+          <% end %>
         <% end %>
       </tr>
       <tr>
