@@ -1,0 +1,12 @@
+<div class="top-hero-wrapper text-center">
+  <div class="container top-hero-container">
+    <h1 class="text-white">職員一覧</h1>
+    <div class="row">
+      <div class="col-md-offset-2 col-md-2">
+        <% @nurses.each do |nurse| %>
+          <%= link_to nurse.name, nurse_path(nurse.id), class: 'btn btn-block btn-white' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

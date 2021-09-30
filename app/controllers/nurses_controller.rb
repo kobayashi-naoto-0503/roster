@@ -1,5 +1,9 @@
 class NursesController < ApplicationController
   
+  def index
+    @nurses = Nurse.all
+  end
+  
   def new
     @nurse = Nurse.new
   end

@@ -18,12 +18,14 @@ module NurseWorkSchedulesHelper
   def select_condition(nurse)
     term = Term.find_by(nurse_id: nurse.id)
     hash = {}
-    hash["日"] = 0 if term.day_shift
-    hash["夜"] = 1 if term.night_shift
-    hash["明"] = 2 if term.after_night_shift
-    hash["公"] = 3
-    hash["有"] = 4
-    hash["リ"] = 5
+    hash["日"] = DAY_SHIFT if term.day_shift
+    hash["夜"] = NIGHT_SHIFT if term.night_shift
+    hash["明"] = AFTER_NIGHT_SHIFT if term.after_night_shift
+    hash["公"] = PUBLIC_HOLIDAY
+    hash["有"] = PAID_HOLIDAY
+    hash["リ"] = REFRESH_VACATION
+    hash["産"] = MATERNITY_LEAVE
+    hash["育"] = CHILDCARE_LEAVE
     return hash
   end
   
