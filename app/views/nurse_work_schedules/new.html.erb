@@ -34,24 +34,20 @@
               <% end %>
             </td>
               <% @day.times do |t| %>
-                
                 <td>
-                  <%# if @leaves.find_by(nurse_id: nurse.id) %>
-                    <%# if @leaves.find_by(nurse_id: nurse.id).start_at.strftime("%Y年%m月%d日") <= Date.new(Date.current.next_month.year,Date.current.next_month.month,t+1).strftime("%Y年%m月%d日") && Date.new(Date.current.next_month.year,Date.current.next_month.month,t+1).strftime("%Y年%m月%d日") => @leaves.find_by(nurse_id: nurse.id).end_at.strftime("%Y年%m月%d日") %>
-                      <%#= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[0,1,2,4,5]) %>
-                 <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
-                  <% if hope_holiday %>
-                    <% if hope_holiday.holiday_type == "public_holiday" %>
-                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled: NurseWorkSchedulesController::SHIFT_TYPE), class: 'form-control-holiday-type'%>
-                      <%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
-                    <% elsif hope_holiday.holiday_type == "paid_holiday"%>
-                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[DAY_SHIFT,NIGHT_SHIFT,AFTER_NIGHT_SHIFT,PUBLIC_HOLIDAY,REFRESH_VACATION]), class: 'form-control-holiday-type'%>
-                    <% elsif hope_holiday.holiday_type == "refresh_vacation"%>
-                      <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), disabled:[DAY_SHIFT,NIGHT_SHIFT,AFTER_NIGHT_SHIFT,PUBLIC_HOLIDAY,PAID_HOLIDAY]), class: 'form-control-holiday-type'%>
+                  <% leave =@leaves.find_by(nurse_id: nurse.id) %>
+                    <% if leave %>
+                      <% if leave.start_at.strftime("%Y年%m月%d日") <= leave_date_condition(t) && leave_date_condition(t) >= leave.end_at.strftime("%Y年%m月%d日") %>
+                        <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select( select_leave(leave)) %>
+                      <% end %>
+                    <% else %>
+                      <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
+                        <% if hope_holiday %>
+                          <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), selected: select_holiday(hope_holiday), disabled: NurseWorkSchedulesController::SHIFT_TYPE), class: 'form-control-holiday-type'%><%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
+                        <% else %>
+                          <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), DAY_SHIFT), class: 'form-control-work-type' %>
+                        <% end %>
                     <% end %>
-                  <% else %>
-                    <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), DAY_SHIFT), class: 'form-control-work-type' %>
-                  <% end %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
                   <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
                 </td>
