@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'logins#index'
   get 'nurse_work_schedules/show'
   
+  
   resources :nurses
   resources :nurse_work_schedules
   
@@ -12,7 +13,10 @@ Rails.application.routes.draw do
   
   get '/nurses/:id', to: 'nurses#index'
   
-  get '/terms/:id/new', to: 'terms#new', as: 'terms'
+  get 'terms/index', to: 'terms#index'
+  get '/terms/:id/show', to: 'terms#show', as: 'terms'
+  get '/terms/:id/edit', to: 'terms#edit', as: 'terms_edit'
+  get '/terms/:id/new', to: 'terms#new', as: 'terms_new'
   post '/terms/:id/create', to: 'terms#create', as: 'terms_create'
   
   get '/hope_holidays/:id/new', to: 'hope_holidays#new', as: 'hope_holidays'

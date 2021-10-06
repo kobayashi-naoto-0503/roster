@@ -1,0 +1,24 @@
+<div class="terms-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 terms-new-container">
+        <h1 class="text-center text-white">雇用条件</h1>
+        <h2 class="topic-author">
+          <%= @nurse.name %>
+        </h2>
+          <div class="col-md-3">
+            <%= link_to @term.employment, terms_edit_path(@term.id,@term.employment), class: 'btn btn-block btn-white' %>
+          </div>
+          <div class="col-md-3">
+            <%= link_to @term.day_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          </div>
+          <div class="col-md-3">
+            <%= link_to @term.night_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          </div>
+          <div class="col-md-3">
+            <%= link_to @term.after_night_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

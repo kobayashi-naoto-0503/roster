@@ -25,7 +25,7 @@
         <% @nurses.each do |nurse| %>
           <tr>
             <td class="fixed01">
-              <%#= nurse_select(nurse).employment_i18n %> 
+              <%= nurse_select(nurse).employment_i18n %> 
               <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
             <td class="fixed02">
@@ -35,8 +35,13 @@
             </td>
               <% @day.times do |t| %>
                 <td>
-                  <%# whereメソッドでdatetimeカラムを検索する時は、Time.zone.parse使わないと、値に変換してくれない %>
-                  <%= link_to edit_nurse_work_schedule_path(@nurse_work_schedules.where(nurse_id: nurse.id, work_day: Time.zone.parse("#{params[:year_date][:year]}-#{params[:month_date][:month]}-#{t+1}")).ids), method: :get do %>
+                  <% nurse_work_schedule_id = @nurse_work_schedules.where(nurse_id: nurse.id, work_day: Time.zone.parse("#{params[:year_date][:year]}-#{params[:month_date][:month]}-#{t+1}")).ids %>
+                  <%= if nurse_work_schedule_id.present? %>
+                    <%# whereメソッドでdatetimeカラムを検索する時は、Time.zone.parse使わないと、値に変換してくれない %>
+                    <%= link_to edit_nurse_work_schedule_path(nurse_work_schedule_id), method: :get do %>
+                      <%= work_type_view(nurse)[t]%>
+                    <% end %>
+                  <% else %>
                     <%= work_type_view(nurse)[t]%>
                   <% end %>
                 </td>
