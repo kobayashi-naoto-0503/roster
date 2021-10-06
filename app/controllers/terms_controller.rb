@@ -1,5 +1,14 @@
 class TermsController < ApplicationController
   
+  def index
+    @nurses = Nurse.all
+  end
+  
+  def show
+    @term = Term.find_by(id: params[:id])
+  end
+  
+  
   def new
     @nurse = Nurse.find_by(id: params[:id])
     @term = Term.new

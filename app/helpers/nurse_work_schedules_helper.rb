@@ -45,7 +45,7 @@ module NurseWorkSchedulesHelper
     return hash
   end
   
-  def work_type_view(nurse)　#nurse_work_scheduleのshow.htmlにある40行目
+  def work_type_view(nurse) #nurse_work_scheduleのshow.htmlにある40行目
     nurse_work_schedules = NurseWorkSchedule.where(nurse_id: nurse.id)
     work_type_array = []
     nurse_work_schedules.each do |nurse_work_schedule|
