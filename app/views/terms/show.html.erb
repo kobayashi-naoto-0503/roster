@@ -6,18 +6,23 @@
         <h2 class="topic-author">
           <%= @nurse.name %>
         </h2>
-          <div class="col-md-3">
-            <%= link_to @term.employment, terms_edit_path(@term.id,@term.employment), class: 'btn btn-block btn-white' %>
+           <div class="form-group">
+            <%= "雇用形態"  %>
+            <%= link_to @term.employment_i18n, "#", class: 'form-control' %>
           </div>
-          <div class="col-md-3">
-            <%= link_to @term.day_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          <div class="form-group">
+            <%= "日勤"  %>
+            <%= link_to term_show_shift_ture_false[0], "#", class: 'form-control' %>
           </div>
-          <div class="col-md-3">
-            <%= link_to @term.night_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          <div class="form-group">
+            <%= "夜勤"  %>
+            <%= link_to term_show_shift_ture_false[1], "#", class: 'form-control' %>
           </div>
-          <div class="col-md-3">
-            <%= link_to @term.after_night_shift, terms_edit_path(@term.id), class: 'btn btn-block btn-white' %>
+          <div class="form-group">
+            <%= "夜勤明け"  %>
+            <%= link_to term_show_shift_ture_false[2], "#", class: 'form-control' %>
           </div>
+          
       </div>
     </div>
   </div>

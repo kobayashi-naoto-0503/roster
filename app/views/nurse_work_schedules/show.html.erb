@@ -36,7 +36,7 @@
               <% @day.times do |t| %>
                 <td>
                   <% nurse_work_schedule_id = @nurse_work_schedules.where(nurse_id: nurse.id, work_day: Time.zone.parse("#{params[:year_date][:year]}-#{params[:month_date][:month]}-#{t+1}")).ids %>
-                  <%= if nurse_work_schedule_id.present? %>
+                  <% if nurse_work_schedule_id.present? %>
                     <%# whereメソッドでdatetimeカラムを検索する時は、Time.zone.parse使わないと、値に変換してくれない %>
                     <%= link_to edit_nurse_work_schedule_path(nurse_work_schedule_id), method: :get do %>
                       <%= work_type_view(nurse)[t]%>

@@ -5,7 +5,8 @@ class TermsController < ApplicationController
   end
   
   def show
-    @term = Term.find_by(id: params[:id])
+    @nurse = Nurse.find_by(id: params[:id])
+    @term = Term.find_by(nurse_id: params[:id])
   end
   
   
