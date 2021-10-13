@@ -7,22 +7,24 @@
           <%= @nurse.name %>
         </h2>
            <div class="form-group">
-            <%= "雇用形態"  %>
-            <%= link_to @term.employment_i18n, "#", class: 'form-control' %>
+            <%= "雇用形態" %>
+            <%= @term.employment_i18n %>
           </div>
           <div class="form-group">
-            <%= "日勤"  %>
-            <%= link_to term_show_shift_ture_false[0], "#", class: 'form-control' %>
+            <%= "日勤" %>
+            <%= term_show_shift_ture_false[0] %>
           </div>
           <div class="form-group">
-            <%= "夜勤"  %>
-            <%= link_to term_show_shift_ture_false[1], "#", class: 'form-control' %>
+            <%= "夜勤" %>
+            <%= term_show_shift_ture_false[1] %>
           </div>
           <div class="form-group">
-            <%= "夜勤明け"  %>
-            <%= link_to term_show_shift_ture_false[2], "#", class: 'form-control' %>
+            <%= "夜勤明け" %>
+            <%= term_show_shift_ture_false[2] %>
           </div>
-          
+          <%= link_to edit_term_path(@term.id), method: :get do%>
+            <%= "編集" %>
+          <% end %>
       </div>
     </div>
   </div>
