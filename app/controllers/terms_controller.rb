@@ -9,6 +9,20 @@ class TermsController < ApplicationController
     @term = Term.find_by(nurse_id: params[:id])
   end
   
+  def edit
+    #binding.pry
+    #@nurse = Nurse.find_by(id: params[:id])
+    @term = Term.find(params[:id])
+    @nurse = @term.nurse
+  end
+  
+  def update
+    @term = Term.find(params[:id])
+     @nurse = @term.nurse
+    @term.update(term_update_params) 
+    redirect_to term_path(@nurse.id), success: '更新が完了しました'
+    #pathでviewに送るidをコントローラーで取得し、渡す。
+  end
   
   def new
     @nurse = Nurse.find_by(id: params[:id])
@@ -29,5 +43,9 @@ class TermsController < ApplicationController
   private
   def term_params
     params.require(:term).permit(:employment, :day_shift, :night_shift, :after_night_shift, :nurse_id)
+  end
+  
+  def term_update_params
+    params.require(:term).permit(:employment, :day_shift, :night_shift, :after_night_shift)
   end
 end
