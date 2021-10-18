@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_01_133253) do
+ActiveRecord::Schema.define(version: 2021_10_18_115710) do
+
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hope_holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "nurse_id"
@@ -46,13 +52,13 @@ ActiveRecord::Schema.define(version: 2021_09_01_133253) do
   end
 
   create_table "nurses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "affiliation"
     t.integer "staff_id"
     t.string "name"
     t.boolean "authority", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "department_id"
   end
 
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

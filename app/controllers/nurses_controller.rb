@@ -2,6 +2,9 @@ class NursesController < ApplicationController
   
   def index
     @nurses = Nurse.all
+    @terms =Term.all
+    @hope_holidays = HopeHoliday.all
+    @leaves = Leave.all
   end
   
   def new
@@ -26,6 +29,6 @@ class NursesController < ApplicationController
   
   private
   def nurse_params
-    params.require(:nurse).permit(:affiliation, :staff_id, :name, :authority, :password, :password_confirmation)
+    params.require(:nurse).permit(:department_id, :staff_id, :name, :authority, :password, :password_confirmation)
   end
 end

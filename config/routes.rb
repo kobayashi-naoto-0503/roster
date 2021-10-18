@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'departments/new'
   get 'sessions/new'
   root 'logins#index'
   get 'nurse_work_schedules/show'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   resources :nurses
   resources :nurse_work_schedules
   resources :terms
+  resources :departments
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

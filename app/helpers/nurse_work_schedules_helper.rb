@@ -14,8 +14,9 @@ module NurseWorkSchedulesHelper
     Date.new(Date.current.next_month.year,Date.current.next_month.month,t+1).strftime("%Y年%m月%d日")
   end
   
-  def nurse_select(nurse) #nurse_work_scheduleのnew.htmlにある28行目
-    Term.find_by(nurse_id: nurse.id)
+  def nurse_employment(nurse) #nurse_work_scheduleのnew.htmlにある28行目
+    term = Term.find_by(nurse_id: nurse.id)
+    term.employment_i18n if term.present?
   end
   
   def select_leave(leave) #nurse_work_scheduleのnew.htmlにある41行目の選択指定で使っている。
