@@ -5,8 +5,8 @@
         <h1 class="text-center text-white">職員登録</h1>
         <%= form_for @nurse do |f| %>
           <div class="form-group">
-            <%= f.label :"所属", class: 'text-white' %>
-            <%= f.select :affiliation, options_for_select_from_enum(Nurse, :affiliation), class: 'form-control' %>
+            <%= f.label :"部署", class: 'text-white' %>
+            <%= f.select :department_id, options_for_select(department_select), class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :"職員ID", class: 'text-white' %>

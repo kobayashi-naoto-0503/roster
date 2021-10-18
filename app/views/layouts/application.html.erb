@@ -21,9 +21,14 @@
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-             <li>
-              <%= link_to nurse_work_schedules_path do %>
-                <%= "勤務表一覧" %>
+            <li>
+              <%= link_to new_department_path do %>
+                <%= "部署登録" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_nurse_path do %>
+                <%= "職員登録" %>
               <% end %>
             </li>
             <li>
@@ -32,8 +37,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to new_nurse_path do %>
-                <%= "職員登録" %>
+              <%= link_to nurse_work_schedules_path do %>
+                <%= "勤務表一覧" %>
               <% end %>
             </li>
             <li>

@@ -1,0 +1,16 @@
+<div class="nurses-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 nurses-new-container">
+        <h1 class="text-center text-white">部署登録</h1>
+        <%= form_for @department do |f| %>
+          <div class="form-group">
+            <%= f.label :"部署", class: 'text-white' %>
+            <%= f.text_field :department, class: 'form-control' %>
+          </div>
+          <%= f.submit "登録", class: 'btn-block btn-white' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,7 @@
         <% @nurses.each do |nurse| %>
           <tr>
             <td class="fixed01">
-              <%= nurse_select(nurse).employment_i18n %> 
+              <%= nurse_employment(nurse) %> 
               <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
             </td>
             <td class="fixed02">

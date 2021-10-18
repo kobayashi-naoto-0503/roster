@@ -25,12 +25,12 @@ class TermsController < ApplicationController
   end
   
   def new
-    @nurse = Nurse.find_by(id: params[:id])
+    @nurse = Nurse.find_by(id: params[:format])
     @term = Term.new
   end
   
   def create
-    @nurse = Nurse.find_by(id: params[:id])
+    @nurse = Nurse.find_by(id: params[:format])
     @term = Term.new(term_params)
     if @term.save
       redirect_to nurse_path(@nurse.id), success: '登録が完了しました'

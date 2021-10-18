@@ -1,17 +1,5 @@
 ja:
   enums:              #enum型に対する日本語定義であることを明示するために記述
-    nurse:           #モデル名を指定
-      affiliation:           #所属
-        system_department: "システム科"     
-        nursing_manager: "看護部長"   
-        ward_2a: "２A病棟"      
-        ward_2b: "２B病棟"
-        ward_3a: "３A病棟"
-        ward_3b: "３B病棟"
-        ward_4a: "４A病棟"
-        ward_5a: "５A病棟"
-        temporary_ward_1: "臨時病棟１"
-        temporary_ward_2: "臨時病棟２"
     term:                   #就業条件
       employment:           #雇用形態
         full_time:  常      #常勤

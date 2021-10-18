@@ -7,13 +7,28 @@
           <%= link_to nurse.name, nurses_path(nurse.id), class: 'btn btn-block btn-white' %>
         </div>
         <div class="col-md-offset-1 col-md-2">
-          <%= link_to "term", term_path(nurse.id), class: 'btn btn-block btn-white' %>
+          <% term = @terms.find_by(nurse_id: nurse.id) %>
+          <% if term.present? %>
+            <%= link_to "雇用条件", term_path(nurse.id), class: 'btn btn-block btn-white' %>
+          <% else %>
+            <%= link_to "雇用条件", new_term_path(nurse.id), class: 'btn btn-block btn-white' %>
+          <% end %>
         </div>
         <div class="col-md-offset-1 col-md-2">
-          <%= link_to "hope_holiday", "#", class: 'btn btn-block btn-white' %>
+          <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id) %>
+          <% if hope_holiday.present? %>
+            <%= link_to "希望休", "#", class: 'btn btn-block btn-white' %>
+          <% else %>
+            <%= link_to "希望休", "#", class: 'btn btn-block btn-white' %>
+          <% end %>
         </div>
         <div class="col-md-offset-1 col-md-2">
-          <%= link_to "leave", "#", class: 'btn btn-block btn-white' %>
+          <% leave = @leaves.find_by(nurse_id: nurse.id) %>
+          <% if leave.present? %>
+            <%= link_to "長期休暇", "#", class: 'btn btn-block btn-white' %>
+          <% else %>
+            <%= link_to "長期休暇", "#", class: 'btn btn-block btn-white' %>
+          <% end %>
         </div>
       <% end %>
     </div>
