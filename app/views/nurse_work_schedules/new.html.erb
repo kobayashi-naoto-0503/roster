@@ -23,36 +23,38 @@
       </tr>
       <%= form_tag(nurse_work_schedules_path, method: :post) do |w| %>
         <% @nurses.each do |nurse| %>
-          <tr>
-            <td class="fixed01">
-              <%= nurse_employment(nurse) %> 
-              <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
-            </td>
-            <td class="fixed02">
-              <%= link_to nurse_path(nurse.id) do %>
-                <%= nurse.name %>
-              <% end %>
-            </td>
-              <% @day.times do |t| %>
-                <td>
-                  <% leave =@leaves.find_by(nurse_id: nurse.id) %>
-                    <% if leave %>
-                      <% if leave.start_at.strftime("%Y年%m月%d日") <= leave_date_condition(t) && leave_date_condition(t) >= leave.end_at.strftime("%Y年%m月%d日") %>
-                        <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select( select_leave(leave)) %>
-                      <% end %>
-                    <% else %>
-                      <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
-                        <% if hope_holiday %>
-                          <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), selected: select_holiday(hope_holiday), disabled: NurseWorkSchedulesController::SHIFT_TYPE), class: 'form-control-holiday-type'%><%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
-                        <% else %>
-                          <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), DAY_SHIFT), class: 'form-control-work-type' %>
+          <% if current_user.department_id == nurse.department_id %>
+            <tr>
+              <td class="fixed01">
+                <%= nurse_employment(nurse) %> 
+                <%# gemにenum_helpをインストールしてconfig/application.rbにconfig.paths.add 'lib', eager_load: trueをいれ、term.employmentのカラム名の後に_i18nを入れる%>
+              </td>
+              <td class="fixed02">
+                <%= link_to nurse_path(nurse.id) do %>
+                  <%= nurse.name %>
+                <% end %>
+              </td>
+                <% @day.times do |t| %>
+                  <td>
+                    <% leave =@leaves.find_by(nurse_id: nurse.id) %>
+                      <% if leave %>
+                        <% if leave.start_at.strftime("%Y年%m月%d日") <= leave_date_condition(t) && leave_date_condition(t) >= leave.end_at.strftime("%Y年%m月%d日") %>
+                          <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select( select_leave(leave)) %>
                         <% end %>
-                    <% end %>
-                  <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
-                  <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
-                </td>
-              <% end %>
-          </tr>
+                      <% else %>
+                        <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
+                          <% if hope_holiday %>
+                            <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), selected: select_holiday(hope_holiday), disabled: NurseWorkSchedulesController::SHIFT_TYPE), class: 'form-control-holiday-type'%><%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
+                          <% else %>
+                            <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), DAY_SHIFT), class: 'form-control-work-type' %>
+                          <% end %>
+                      <% end %>
+                    <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_day]", "#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}" %>
+                    <%= hidden_field_tag "nurse_#{nurse.id}[work_type_#{t+1}][nurse_id]", nurse.id%>
+                  </td>
+                <% end %>
+            </tr>
+          <% end %>
         <% end %>
         <%= submit_tag( "登録", class: 'btn-block btn-white' )%>
       <% end %>

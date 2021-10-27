@@ -33,7 +33,7 @@ class TermsController < ApplicationController
     @nurse = Nurse.find_by(id: params[:format])
     @term = Term.new(term_params)
     if @term.save
-      redirect_to nurse_path(@nurse.id), success: '登録が完了しました'
+      redirect_to nurses_path(@nurse.id), success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
