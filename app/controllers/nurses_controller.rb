@@ -20,7 +20,7 @@ class NursesController < ApplicationController
   def create
     @nurse = Nurse.new(nurse_params)
     if @nurse.save
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to nurses_path, success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new

@@ -47,16 +47,7 @@ class NurseWorkSchedulesController < ApplicationController
       end
     end
     NurseWorkSchedule.import nurse_work_schedules
-  
-    
-    #@nurse_work_schedule.assign_attributes()
-    #if @nurse_work_schedule.save
-      
-     # redirect_to nurse_path(@nurse.id), success: '登録が完了しました'
-    #else
-    #  flash.now[:danger] = "登録に失敗しました"
-     # render :new
-    #end
+    flash[:notice] = "登録が完了しました。"
   end
   
    private

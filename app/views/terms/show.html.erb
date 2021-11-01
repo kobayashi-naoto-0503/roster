@@ -6,7 +6,12 @@
         <h2 class="topic-author">
           <%= @nurse.name %>
         </h2>
-           <div class="form-group">
+        <%# binding.pry %>
+          <div class="form-group">
+            <%= "所属" %>
+            <%= Department.find_by(id: @nurse.department_id).department %>
+          </div>
+          <div class="form-group">
             <%= "雇用形態" %>
             <%= @term.employment_i18n %>
           </div>
