@@ -44,7 +44,7 @@
                       <% else %>
                         <% hope_holiday = @hope_holidays.find_by(nurse_id: nurse.id, hope_holiday:Time.zone.parse("#{Date.current.next_month.year}-#{Date.current.next_month.month}-#{t+1}")) %>
                           <% if hope_holiday %>
-                            <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), selected: select_holiday(hope_holiday), disabled: NurseWorkSchedulesController::SHIFT_TYPE), class: 'form-control-holiday-type'%><%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
+                            <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_holiday(hope_holiday) ), class: 'form-control-holiday-type'%><%#  NurseWorkSchedulesController::SHIFT_TYPE は、全体で使うような変数がある場合、変数を定数にして値が誰が見てもわかりやすいようにする%>
                           <% else %>
                             <%= select_tag "nurse_#{nurse.id}[work_type_#{t+1}][work_type]", options_for_select(select_condition(nurse), DAY_SHIFT), class: 'form-control-work-type' %>
                           <% end %>
@@ -56,7 +56,7 @@
             </tr>
           <% end %>
         <% end %>
-        <%= submit_tag( "登録", class: 'btn-block btn-white' )%>
+        <%= submit_tag( "登録", class: 'btn-block btn-white' ) %>
       <% end %>
     </table>
 </div>

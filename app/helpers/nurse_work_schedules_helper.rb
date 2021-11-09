@@ -27,11 +27,11 @@ module NurseWorkSchedulesHelper
   end
   
   def select_holiday(hope_holiday) #nurse_work_scheduleのnew.htmlにある41行目の選択指定で使っている。
-    select_holiday_array = []
-    select_holiday_array << PUBLIC_HOLIDAY if hope_holiday.present? && hope_holiday.holiday_type == "public_holiday"
-    select_holiday_array << PAID_HOLIDAY if hope_holiday.present? && hope_holiday.holiday_type == "paid_holiday"
-    select_holiday_array << REFRESH_VACATION if hope_holiday.present? && hope_holiday.holiday_type == "refresh_vacation"
-    return select_holiday_array
+    select_holiday_hash = {}
+    select_holiday_hash["公"] = PUBLIC_HOLIDAY if hope_holiday.present? && hope_holiday.holiday_type == "public_holiday"
+    select_holiday_hash["有"] = PAID_HOLIDAY if hope_holiday.present? && hope_holiday.holiday_type == "paid_holiday"
+    select_holiday_hash["リ"] = REFRESH_VACATION if hope_holiday.present? && hope_holiday.holiday_type == "refresh_vacation"
+    return select_holiday_hash
   end
   
   def select_condition(nurse) #options_for_selectで使っている。

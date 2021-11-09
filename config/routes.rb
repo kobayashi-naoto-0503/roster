@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/index'
   get 'departments/new'
   get 'sessions/new'
   root 'logins#index'
