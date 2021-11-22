@@ -40,16 +40,17 @@ class NurseWorkSchedulesController < ApplicationController
     nurse_work_schedules =[]
     nurses.each do |nurse|
       if current_user.department_id == nurse.department_id
-      nurse_params = params["nurse_#{nurse.id}"]
-      nurse_params.each do |key,value| 
-        value["work_type"] = value["work_type"].to_i
-        value.permit!
-        nurse_work_schedules << NurseWorkSchedule.new(value.to_h)
-      end
+        nurse_params = params["nurse_#{nurse.id}"]
+        nurse_params.each do |key,value| 
+          value["work_type"] = value["work_type"].to_i
+          value.permit!
+          nurse_work_schedules << NurseWorkSchedule.new(value.to_h)
+        end
       end
     end
     NurseWorkSchedule.import nurse_work_schedules
     flash[:notice] = "登録が完了しました。"
+    redirect_to nurse_work_schedules_path
   end
   
    private
